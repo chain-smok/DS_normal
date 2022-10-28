@@ -1,0 +1,19 @@
+  Youtube方法
+前序:+-+*635/42/87，中序=?
+step1:+-(6*3+5)(4/2)(8/7)
+step2:6*3+5-4/2+8/7
+
+後序:ABC+*CBA-+*，中序=?
+step1:A(B+C)*C(B-A)+*
+step2:A*(B+C)(C+B-A)*
+step3:A*(B+c)*(C+B-A)
+
+中序:(a+b)*c/d/(e-f)，前序=?
+step1:(*(+ab)c)/d/(-ef)
+step2:(/(*(+ab)c)d)/(-ef)
+step3://*+abcd-ef
+
+中序:(a+b)*c/d/(e-f)，後序=?
+step1:((ab+)c*)/d/(ef-)
+step2:(ab+c*d/)/(ef-)
+step3:ab+c*d/ef-/
