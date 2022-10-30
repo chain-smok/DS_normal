@@ -1,39 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MaxNum 10 //å®šç¾©å †ç–Šå¤§å°
-int Stack[MaxNum]; //ä»¥é™£åˆ—Stackç•¶ä½œå †ç–Š
-int Top = -1; //Topç´€éŒ„ç›®å‰å †ç–Šé ‚ç«¯çš„ç´¢å¼•å€¼ï¼Œåˆå§‹å€¼è¨­ç‚º-1è¡¨ç¤ºå †ç–Šç‚ºç©º
-void Push(int); //å®£å‘ŠPushå‰¯ç¨‹å¼
-int Pop(void); //å®£å‘ŠPopå‰¯ç¨‹å¼
-int Transfer(char*); //å®£å‘Šå¾Œåºé‹ç®—å¼ä¹‹å‰¯ç¨‹å¼
+#include <string.h>
+#define MaxNum 10 //©w¸q°ïÅ|¤j¤p
+int Stack[MaxNum]; //¥H°}¦CStack·í§@°ïÅ|
+int Top = -1; //Top¬ö¿ı¥Ø«e°ïÅ|³»ºİªº¯Á¤Ş­È¡Aªì©l­È³]¬°-1ªí¥Ü°ïÅ|¬°ªÅ
+void Push(int); //«Å§iPush°Æµ{¦¡
+int Pop(void); //«Å§iPop°Æµ{¦¡
+int Transfer(char*); //«Å§i«á§Ç¹Bºâ¦¡¤§°Æµ{¦¡
 char itemset[MaxNum];
-int main(void) //ä¸»ç¨‹å¼
+int main(void) //¥Dµ{¦¡
 {
-printf("===============ç¨‹å¼æè¿°================\n");
-printf("= ç¨‹å¼åç¨±ï¼šch3-3.6.c =\n");
-printf("= ç¨‹å¼ç›®çš„ï¼šå¾Œåºé‹ç®— =\n"); 
+printf("===============µ{¦¡´y­z================\n");
+printf("= µ{¦¡¦WºÙ¡Gch3-3.11.c =\n");
+printf("= µ{¦¡¥Øªº¡G«e§Ç¹Bºâ =\n"); 
 printf("=======================================\n"); 
-printf("=================è¼¸å…¥==================\n"); 
+printf("=================¿é¤J==================\n"); 
 while(1) {
-printf("è«‹è¼¸å…¥ä¸€å€‹å¾Œåºå¼:");
+printf("½Ğ¿é¤J¤@­Ó«e§Ç¦¡:");
 gets(itemset);
 printf("%s = %d\n",itemset,Transfer(itemset));
 }
-system("pause"); //ä½¿ç¨‹å¼æš«åœåœ¨åŸ·è¡Œç•«é¢è®“æˆ‘å€‘çœ‹åˆ°çµæœ
+system("pause"); //¨Ïµ{¦¡¼È°±¦b°õ¦æµe­±Åı§Ú­Ì¬İ¨ìµ²ªG
 return (0);
 }
-int Transfer(char itemset[]) //å¾Œåºé‹ç®—å¼ä¹‹å‰¯ç¨‹å¼
+int Transfer(char itemset[]) //«á§Ç¹Bºâ¦¡¤§°Æµ{¦¡
 { 
-printf("é‹ç®—çµæœï¼š"); 
-char *pt=itemset;
-int opd1,opd2;
-while(*pt) { 
-if(*pt >= '0' && *pt <= '9')
-Push(*pt-'0');
+printf("¹Bºâµ²ªG¡G"); 
+int opd1,opd2,i;
+i=strlen(itemset)-1;
+while(i!=-1) { 
+if(itemset[i] >= '0' && itemset[i] <= '9')
+Push(itemset[i]-'0');
 else {
-opd1=Pop(); //ç¬¬ä¸€å€‹é‹ç®—å…ƒ
-opd2=Pop(); //ç¬¬äºŒå€‹é‹ç®—å…ƒ
-switch(*pt) {
+opd1=Pop(); //²Ä¤@­Ó¹Bºâ¤¸
+opd2=Pop(); //²Ä¤G­Ó¹Bºâ¤¸
+switch(itemset[i]) {
 case '+': Push(opd1 + opd2);
 break; 
 case '-': Push(opd1 - opd2);
@@ -45,22 +46,22 @@ break;
 default: return -1;
 }
 }
-pt++; } 
+i--; } 
 return Pop( ); }
-//å°‡è³‡æ–™åŠ å…¥å †ç–Š
-void Push(int n) //Pushå‰¯ç¨‹å¼
+//±N¸ê®Æ¥[¤J°ïÅ|
+void Push(int n) //Push°Æµ{¦¡
 {
 if(Top == MaxNum -1) {
-printf("å †ç–Šå·²æ»¿ï¼");
+printf("°ïÅ|¤wº¡¡I");
 return;
 }
 Stack[++Top] = n;
 }
-//å–å‡ºå †ç–Šè³‡æ–™
-int Pop(void) //Popå‰¯ç¨‹å¼
+//¨ú¥X°ïÅ|¸ê®Æ
+int Pop(void) //Pop°Æµ{¦¡
 {
 if(Top == -1) {
-printf("å †ç–Šæ˜¯ç©ºï¼");
+printf("°ïÅ|¬OªÅ¡I");
 return 0;
 }
 return Stack[Top--];
