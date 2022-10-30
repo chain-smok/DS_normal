@@ -52,11 +52,9 @@ Top--;
 printf("\n"); 
 system("pause"); //使程式暫停在執行畫面
 */
-while(Top >=0) 
-{ 
-Stack1[j]=Stack2[Top];
-Top--; 
-} 
+for(int l=0;l<=Top;l++){
+    printf("%c",Stack2[l]);
+}
 for(int m=k;m>=0;m--){
     printf("%c",Stack1[m]);
 }
@@ -89,11 +87,12 @@ Stack2[Top] = op;
 } 
 break; 
 case '+': case '-': case '*': case '/':
-while(Priority(Stack2[Top]) >= Priority(op)) 
+while(Priority(Stack2[Top]) > Priority(op)) 
 { 
 //printf("%c", Stack[Top]); 
 Stack1[j]=Stack2[Top];
 //printf("%c", Stack1[j]);
+j++;
 Top--; 
 } 
 // 存入堆疊
@@ -110,6 +109,7 @@ while(Stack2[Top] != ')')
 //printf("%c", Stack[Top]); 
 Stack1[j]=Stack2[Top];
 //printf("%c", Stack1[j]);
+j++;
 Top--; 
 } 
 Top--; // 不輸出( 
@@ -119,10 +119,9 @@ default:
 //printf("%c", op); 
 Stack1[j]=op;
 //printf("%c", Stack1[j]);
+j++;
 break; 
-
 } 
-if(Stack1[j]!='0'){j++;}
 i--; 
 }
 } 
